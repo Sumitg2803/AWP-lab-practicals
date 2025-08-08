@@ -1,0 +1,32 @@
+body{
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Times New Roman';
+}
+
+h3{
+    text-align: center;
+}
+
+form{
+    background-color: lightblue;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.box{
+    width: 100%;
+    
+}
+
+button{
+    background-color: green;
+    border:none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 102%;
+    margin-top: 10px;
+}

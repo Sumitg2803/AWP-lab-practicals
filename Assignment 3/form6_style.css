@@ -1,0 +1,26 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9f9f9; /* or your preferred color */
+}
+
+form {
+    margin: 0 auto;
+}
+
+h1{
+    text-align: center;
+    color: blueviolet;
+}
+
+#table1{
+    background-color: blueviolet;
+    border: 5px solid black;
+}
+
+button{
+    width: 20%;
+    padding: 5px;
+}

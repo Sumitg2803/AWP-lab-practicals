@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 5</title>
+    <link rel="stylesheet" href="form5_style.css">
+</head>
+<body>
+    
+    <form>
+        <caption><h1 style="color: red;">Registration Form HTML</h1></caption>
+        <fieldset>
+            <h3 >Registration Form</h3>
+            <table border="2">
+                
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" placeholder="Enter your name"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" placeholder="Enter your password"></td>
+                </tr>
+                <tr>
+                    <td>DOB:</td>
+                    <td><input type="date" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="email" placeholder="Enter your email" required></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" name="address" placeholder="Enter your address" required></td>
+                </tr>
+                <tr>
+                    <td>Pincode:</td>
+                    <td><input type="text" name="pincode" placeholder="Enter your pincode" required></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="text" name="phone" placeholder="Enter your phone number" required></td>
+                </tr>
+                <tr>
+                    <td>College:</td>
+                    <td><input type="text" name="college" placeholder="Enter your college name" required></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <input type="radio" name="gender" value="male" required> Male
+                        <input type="radio" name="gender" value="female" required> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hobbies:</td>
+                    <td>
+                        <input type="checkbox" name="hobbies" value="singing"> Singing
+                        <input type="checkbox" name="hobbies" value="dancing"> Dancing
+                        <input type="checkbox" name="hobbies" value="painting"> Painting
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        <select name="country" required>
+                            <option value="india">India</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">UK</option>
+                            <option value="canada">Canada</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </fieldset>    
+    </form>
+</body>
+</html>

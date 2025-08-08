@@ -1,0 +1,22 @@
+body{
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+fieldset{
+    width: 600px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+button{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}

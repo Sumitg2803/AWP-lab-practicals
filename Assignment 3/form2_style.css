@@ -1,0 +1,39 @@
+body{
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form{
+    border: 5px solid #ccc;
+    padding: 20px 30px;
+    border-radius: 1px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: lightgrey;
+}
+
+h3{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input{
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: gray;
+}
+
+button{
+    padding: 12px 20px;
+    background-color: grey;
+    border: none;
+    border-radius: 5px;
+}
