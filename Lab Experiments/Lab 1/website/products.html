@@ -196,7 +196,7 @@
                         <h5>Filter Products</h5>
                     </div>
                     <div class="col-md-6">
-                        <select class="form-select" id="categoryFilter">
+                        <select class="form-select" id="categoryFilter" onchange="filterProducts()">
                             <option value="all">All Categories</option>
                             <option value="phones">Phones</option>
                             <option value="laptops">Laptops</option>
@@ -209,7 +209,7 @@
             <!-- All Products -->
             <div class="row">
                 <!-- Product 1 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card"  data-category="phones">
                     <div class="product" onclick="openProduct('iphone15')">
                         <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&h=300&fit=crop" alt="iPhone 15">
                         <h3>iPhone 15</h3>
@@ -221,7 +221,7 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="laptops">
                     <div class="product" onclick="openProduct('macbook')">
                         <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop" alt="MacBook Pro">
                         <h3>MacBook Pro</h3>
@@ -233,7 +233,7 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="accessories">
                     <div class="product" onclick="openProduct('airpods')">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjmp7xcU-YhhvynCw4aXwK4S_5z-rsHEgjmw&s" alt="AirPods">
                         <h3>AirPods</h3>
@@ -245,7 +245,7 @@
                 </div>
 
                 <!-- Product 4 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="accessories">
                     <div class="product" onclick="openProduct('applewatch')">
                         <img src="https://cdn.mos.cms.futurecdn.net/SeXGSVHyAuesNHj2sxGXMk.jpg" alt="Apple Watch">
                         <h3>Apple Watch</h3>
@@ -257,7 +257,7 @@
                 </div>
 
                 <!-- Product 5 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="phones">
                     <div class="product" onclick="openProduct('samsung')">
                         <img src="https://www.digitaltrends.com/wp-content/uploads/2024/01/galaxy-s24-ultra-back-wood-2.jpg?p=1" alt="Samsung Galaxy S24 Ultra">
                         <h3>Samsung Galaxy S24 Ultra</h3>
@@ -269,7 +269,7 @@
                 </div>
 
                 <!-- Product 6 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="laptops">
                     <div class="product" onclick="openProduct('dell')">
                         <img src="https://cdn.mos.cms.futurecdn.net/QAfHS5KggYkkAy5mWd9U2Z.jpg" alt="Dell Laptop">
                         <h3>Dell Laptop</h3>
@@ -281,7 +281,7 @@
                 </div>
 
                 <!-- Product 7 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="laptops">
                     <div class="product" onclick="openProduct('hp')">
                         <img src="https://m.media-amazon.com/images/I/71lWuRFiCoL._UF1000,1000_QL80_.jpg" alt="HP Laptop">
                         <h3>HP Pavilion</h3>
@@ -293,7 +293,7 @@
                 </div>
 
                 <!-- Product 8 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="laptops">
                     <div class="product" onclick="openProduct('macbook')">
                         <img src="https://www.notebookcheck.net/fileadmin/Notebooks/Apple/MacBook_Air_13_M4_Entry/mba_13_m4_case_07.JPG" alt="MacBook">
                         <h3>Apple MacBook Air</h3>
@@ -305,7 +305,7 @@
                 </div>
 
                 <!-- Product 9 -->
-                <div class="col-12 col-sm-6 col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 product-card" data-category="laptops">
                     <div class="product" onclick="openProduct('lenovo')">
                         <img src="https://m.media-amazon.com/images/I/61-XXPIOivL._UF1000,1000_QL80_.jpg" alt="Lenovo ThinkPad">
                         <h3>Lenovo ThinkPad</h3>
@@ -344,6 +344,17 @@
 
         function openProduct(productId) {
             window.location.href = `product-${productId}.html`;
+        }
+        function filterProducts() {
+            const selected = document.getElementById('categoryFilter').value;
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (selected === 'all' || card.getAttribute('data-category') === selected) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 
