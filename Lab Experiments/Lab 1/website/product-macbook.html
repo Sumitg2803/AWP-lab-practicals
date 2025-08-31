@@ -360,7 +360,7 @@
 
         function addToCart() {
             const quantity = document.getElementById('quantity').value;
-            alert(`Added ${quantity} MacBook Pro(s) to your cart!`);
+            window.location.href = `add_to_cart.html?product=MacBook Pro&quantity=${quantity}`;
         }
 
         function addToWishlist(productName) {

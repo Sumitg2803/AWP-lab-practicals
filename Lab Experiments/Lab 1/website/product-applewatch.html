@@ -359,7 +359,7 @@
 
         function addToCart() {
             const quantity = document.getElementById('quantity').value;
-            alert(`Added ${quantity} Apple Watch(es) to your cart!`);
+            window.location.href = `add_to_cart.html?product=Apple Watch&quantity=${quantity}`;
         }
 
         function addToWishlist(productName) {

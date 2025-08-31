@@ -360,7 +360,7 @@
 
         function addToCart() {
             const quantity = document.getElementById('quantity').value;
-            alert(`Added ${quantity} Dell XPS 13 Plus laptop(s) to your cart!`);
+            window.location.href = `add_to_cart.html?product=Dell XPS 13 Plus&quantity=${quantity}`;
         }
 
         function addToWishlist(productName) {
