@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation - My Simple Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .navbar {
+            background-color: rgba(51, 51, 51, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #007bff !important;
+        }
+
+        .main-content {
+            min-height: calc(100vh - 160px);
+            padding-bottom: 50px;
+        }
+
+        .success-container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .success-header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .success-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .success-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .order-details {
+            padding: 30px;
+        }
+
+        .order-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.1rem;
+        }
+
+        .payment-method {
+            display: inline-flex;
+            align-items: center;
+            background: #e3f2fd;
+            padding: 6px 12px;
+            border-radius: 15px;
+            color: #1976d2;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .tracking-info {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .tracking-number {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1976d2;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .estimated-delivery {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .delivery-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .next-steps {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 25px 0;
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 8px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,123,255,0.3);
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid #007bff;
+            color: #007bff;
+            background: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-secondary {
+            border: 2px solid #6c757d;
+            color: #6c757d;
+            background: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: 500;
+            margin: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #6c757d;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.95);
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        footer .social-links {
+            margin-top: 15px;
+        }
+
+        footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #007bff;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .success-container {
+                margin: 15px;
+            }
+            
+            .success-title {
+                font-size: 1.8rem;
+            }
+            
+            .order-details {
+                padding: 20px;
+            }
+            
+            .btn-primary, .btn-outline-primary {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🛒 My Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="success-container">
+            <!-- Success Header -->
+            <div class="success-header">
+                <div class="success-icon">🎉</div>
+                <h1 class="success-title">Order Confirmed!</h1>
+                <p class="success-subtitle">Thank you for your purchase! Your order has been successfully placed.</p>
+            </div>
+
+            <!-- Order Details -->
+            <div class="order-details">
+                <div class="order-info">
+                    <h4 class="text-center mb-4">📦 Order Details</h4>
+                    <div class="detail-row">
+                        <span><strong>Order ID:</strong></span>
+                        <span id="orderId">#MSS-2025-001234</span>
+                    </div>
+                    <div class="detail-row">
+                        <span><strong>Product:</strong></span>
+                        <span id="orderProduct">iPhone 15</span>
+                    </div>
+                    <div class="detail-row">
+                        <span><strong>Quantity:</strong></span>
+                        <span id="orderQuantity">1</span>
+                    </div>
+                    <div class="detail-row">
+                        <span><strong>Payment Method:</strong></span>
+                        <span class="payment-method" id="paymentMethod">
+                            <span id="paymentIcon">💳</span>&nbsp;
+                            <span id="paymentName">Credit Card</span>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span><strong>Order Date:</strong></span>
+                        <span id="orderDate">September 1, 2025</span>
+                    </div>
+                    <div class="detail-row">
+                        <span><strong>Total Paid:</strong></span>
+                        <span id="totalPaid">$999.00</span>
+                    </div>
+                </div>
+
+                <!-- Tracking Information -->
+                <div class="tracking-info">
+                    <h5>📋 Tracking Information</h5>
+                    <p>Your tracking number:</p>
+                    <div class="tracking-number" id="trackingNumber">MSS2025TRK789456</div>
+                    <p class="mt-2"><small>You can use this number to track your package on our website or app.</small></p>
+                </div>
+
+                <!-- Estimated Delivery -->
+                <div class="estimated-delivery">
+                    <div class="delivery-icon">🚚</div>
+                    <h6><strong>Estimated Delivery</strong></h6>
+                    <p class="mb-0">Your order will be delivered by <strong id="deliveryDate">September 5, 2025</strong></p>
+                    <small class="text-muted">We'll send you updates via email and SMS</small>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="next-steps">
+                    <h6><strong>📱 What's Next?</strong></h6>
+                    <ul class="mb-0">
+                        <li>You'll receive an order confirmation email shortly</li>
+                        <li>We'll notify you when your order is shipped</li>
+                        <li>Track your package using the tracking number above</li>
+                        <li>Contact us if you have any questions</li>
+                    </ul>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="trackOrder()">📱 Track My Order</button>
+                    <button class="btn btn-outline-primary" onclick="continueShopping()">🛒 Continue Shopping</button>
+                    <div class="mt-2">
+                        <button class="btn btn-outline-secondary" onclick="downloadInvoice()">📄 Download Invoice</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Simple Store. All rights reserved.</p>
+            <p>Designed with ❤️ for amazing shopping experience</p>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get order details from URL parameters
+        function initializeOrderDetails() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const method = urlParams.get('method') || 'credit';
+                const product = urlParams.get('product') || 'iPhone 15';
+                const quantity = urlParams.get('quantity') || '1';
+                const price = urlParams.get('price') || '999';
+
+                // Payment method configurations
+                const paymentMethods = {
+                    'gpay': { icon: '🟢', name: 'Google Pay' },
+                    'phonepe': { icon: '🟣', name: 'PhonePe' },
+                    'paytm': { icon: '🔵', name: 'Paytm' },
+                    'credit': { icon: '💳', name: 'Credit Card' },
+                    'debit': { icon: '💰', name: 'Debit Card' },
+                    'netbanking': { icon: '🏦', name: 'Internet Banking' },
+                    'cod': { icon: '💵', name: 'Cash on Delivery' },
+                    'upi': { icon: '📱', name: 'UPI Payment' }
+                };
+
+                const selectedMethod = paymentMethods[method] || paymentMethods['credit'];
+                
+                // Update page content
+                document.getElementById('paymentIcon').textContent = selectedMethod.icon;
+                document.getElementById('paymentName').textContent = selectedMethod.name;
+                document.getElementById('orderProduct').textContent = product;
+                document.getElementById('orderQuantity').textContent = quantity;
+                document.getElementById('totalPaid').textContent = `$${price}.00`;
+
+                // Generate random order ID and tracking number
+                const orderId = '#MSS-2025-' + Math.floor(Math.random() * 900000 + 100000);
+                const trackingNumber = 'MSS2025TRK' + Math.floor(Math.random() * 900000 + 100000);
+                
+                document.getElementById('orderId').textContent = orderId;
+                document.getElementById('trackingNumber').textContent = trackingNumber;
+
+                // Set current date and estimated delivery (4 days from now)
+                const today = new Date();
+                const deliveryDate = new Date(today.getTime() + (4 * 24 * 60 * 60 * 1000));
+                
+                document.getElementById('orderDate').textContent = today.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                document.getElementById('deliveryDate').textContent = deliveryDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+            } catch (error) {
+                console.log('Using default values');
+            }
+        }
+
+        function trackOrder() {
+            const trackingNumber = document.getElementById('trackingNumber').textContent;
+            const deliveryDate = document.getElementById('deliveryDate').textContent;
+            alert(`🚚 Tracking your order: ${trackingNumber}\n\nOrder Status: Processing\nExpected Delivery: ${deliveryDate}\n\nYou'll receive email updates as your order progresses!`);
+        }
+
+        function continueShopping() {
+            window.location.href = 'index.html';
+        }
+
+        function downloadInvoice() {
+            const orderDetails = {
+                orderId: document.getElementById('orderId').textContent,
+                product: document.getElementById('orderProduct').textContent,
+                quantity: document.getElementById('orderQuantity').textContent,
+                total: document.getElementById('totalPaid').textContent,
+                date: document.getElementById('orderDate').textContent
+            };
+            
+            alert(`📄 Invoice Details:\n\nOrder ID: ${orderDetails.orderId}\nProduct: ${orderDetails.product}\nQuantity: ${orderDetails.quantity}\nTotal: ${orderDetails.total}\nDate: ${orderDetails.date}\n\n✅ Invoice would be downloaded in a real store!`);
+        }
+
+        // Initialize page when loaded
+        window.addEventListener('load', function() {
+            initializeOrderDetails();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
