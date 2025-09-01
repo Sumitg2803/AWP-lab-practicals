@@ -355,7 +355,17 @@
 
         function buyNow() {
             const quantity = document.getElementById('quantity').value;
-            window.location.href = 'Buy-product.html';
+            const productName = 'iPhone 15';
+            const price = 999 * quantity;
+            
+            // Redirect to payment page with product details
+            const params = new URLSearchParams({
+                product: productName,
+                quantity: quantity,
+                price: price
+            });
+            
+            window.location.href = `payment-options.html?${params.toString()}`;
         }
 
         function addToCart() {

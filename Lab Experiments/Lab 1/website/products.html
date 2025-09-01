@@ -215,7 +215,7 @@
                         <h3>iPhone 15</h3>
                         <p>Amazing smartphone with great camera</p>
                         <div class="price">$999</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('iPhone 15', 999, 'iphone15')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('iPhone 15')">❤️</button>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                         <h3>MacBook Pro</h3>
                         <p>Fast laptop for work and fun</p>
                         <div class="price">$1,999</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('MacBook Pro', 1999, 'macbookpro')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('MacBook Pro')">❤️</button>
                     </div>
                 </div>
@@ -239,7 +239,7 @@
                         <h3>AirPods</h3>
                         <p>Wireless earbuds for music lovers</p>
                         <div class="price">$249</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('AirPods', 249, 'airpods')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('AirPods')">❤️</button>
                     </div>
                 </div>
@@ -251,7 +251,7 @@
                         <h3>Apple Watch</h3>
                         <p>Smart watch for fitness tracking</p>
                         <div class="price">$399</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('Apple Watch', 399, 'applewatch')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('Apple Watch')">❤️</button>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
                         <h3>Samsung Galaxy S24 Ultra</h3>
                         <p>Android phone with amazing features</p>
                         <div class="price">$899</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('Samsung Galaxy S24 Ultra', 899, 'samsung')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('Samsung Galaxy S24 Ultra')">❤️</button>
                     </div>
                 </div>
@@ -275,7 +275,7 @@
                         <h3>Dell Laptop</h3>
                         <p>Perfect laptop for students</p>
                         <div class="price">$1,299</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('Dell Laptop', 1299, 'dell')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('Dell Laptop')">❤️</button>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                         <h3>HP Pavilion</h3>
                         <p>High performance for work & play</p>
                         <div class="price">$1,099</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('HP Pavilion', 1099, 'hp')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('HP Pavilion')">❤️</button>
                     </div>
                 </div>
@@ -299,7 +299,7 @@
                         <h3>Apple MacBook Air</h3>
                         <p>Sleek, lightweight & powerful</p>
                         <div class="price">$1,499</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('Apple MacBook Air', 1499, 'macbookair')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('Apple MacBook Air')">❤️</button>
                     </div>
                 </div>
@@ -311,7 +311,7 @@
                         <h3>Lenovo ThinkPad</h3>
                         <p>Durable laptop for professionals</p>
                         <div class="price">$999</div>
-                        <button class="btn btn-primary" onclick="event.stopPropagation(); window.location.href='Buy-product.html'">Buy Now</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); buyNow('Lenovo ThinkPad', 999, 'lenovo')">Buy Now</button>
                         <button class="heart" onclick="event.stopPropagation(); addToWishlist('Lenovo ThinkPad')">❤️</button>
                     </div>
                 </div>
@@ -334,9 +334,18 @@
     </footer>
 
     <script>
-        function buyNow(productName) {
-            alert("Great choice! You're buying: " + productName);
-        }
+        function buyNow(productName, unitPrice, productId) {
+            const quantity = 1;
+            const price = unitPrice * quantity;
+
+            const params = new URLSearchParams({
+            product: productName,
+            quantity: quantity,
+            price: price
+        });
+
+        window.location.href = `payment-options.html?${params.toString()}`;
+        } 
 
         function addToWishlist(productName) {
             window.open('wishlist.html', '_blank');
