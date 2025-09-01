@@ -41,11 +41,7 @@
       color: #28a745;
       margin-bottom: 20px;
     }
-    .btn-home {
-      border-radius: 30px;
-      padding: 10px 25px;
-      font-size: 1rem;
-    }
+    
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(30px);}
       to {opacity: 1; transform: translateY(0);}
@@ -60,10 +56,16 @@
     </div>
     <h1>Congratulations!🎉</h1>  <h3>Order Placed Successfully!</h3>
     <p>The product has been delivered.<br>Please visit again. <br> Thank You!</p>
-    <a href="#" class="btn btn-primary btn-home" onclick="event.stopPropagation(); window.location.href='index.html'">Continue Shopping</a>
+    
   </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Wait 3 seconds, then redirect to order-confirmation.html with the same query params
+    setTimeout(function() {
+        window.location.href = "order-confirmation.html" + window.location.search;
+    }, 3000);
+</script>
 </body>
 </html>
