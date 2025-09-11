@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Sumit Gaikwad</title>
+    <link rel="stylesheet" href="projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Sumit Gaikwad</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="projects.html" class="nav-link active">Projects</a>
+                <a href="certificates.html" class="nav-link">Certificates</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="resume.html" class="nav-link">Resume</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Animation -->
+    <div class="code-rain" id="codeRain"></div>
+
+    <!-- Main Content -->
+    <main class="projects-section">
+        <div class="container">
+            <h1 class="page-title fade-in">My Projects</h1>
+            <p class="section-subtitle fade-in">Showcasing my passion for coding and development</p>
+            
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- Student Management System -->
+                <div class="project-card slide-in-left">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="project-status completed">
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>Student Management System</h3>
+                        <p class="project-description">
+                            A comprehensive system to manage student data with database integration. 
+                            Features include student registration, grade management, attendance tracking, 
+                            and detailed reporting capabilities.
+                        </p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag mysql">MySQL</span>
+                            <span class="tech-tag gui">Tkinter</span>
+                        </div>
+                        
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Student registration and profile management</li>
+                                <li>Grade and attendance tracking</li>
+                                <li>Database integration with MySQL</li>
+                                <li>Search and filter functionality</li>
+                                <li>Report generation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-screenshots">
+                        <div class="screenshot-container">
+                            <img src="Images/DB_project interface.png" alt="Student Management Interface">
+                            <div class="screenshot-overlay">
+                                <span>User Interface</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-container">
+                            <img src="Images/Database_student.png" alt="Database Structure">
+                            <div class="screenshot-overlay">
+                                <span>Database Structure</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-actions">
+                        <button class="btn btn-primary" onclick="viewProject('student-management')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn btn-secondary" onclick="viewCode('student-management')">
+                            <i class="fab fa-github"></i> Source Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- E-Commerce Website -->
+                <div class="project-card slide-in-right">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-status in-progress">
+                            <span>In Progress</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>E-Commerce Website</h3>
+                        <p class="project-description">
+                            A full-featured e-commerce platform built with modern web technologies. 
+                            Currently developing user authentication, product catalog, shopping cart, 
+                            and payment integration features.
+                        </p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag html">HTML5</span>
+                            <span class="tech-tag css">CSS3</span>
+                            <span class="tech-tag js">JavaScript</span>
+                            <span class="tech-tag php">PHP</span>
+                            <span class="tech-tag mysql">MySQL</span>
+                        </div>
+                        
+                        <div class="project-features">
+                            <h4>Planned Features:</h4>
+                            <ul>
+                                <li>User registration and authentication</li>
+                                <li>Product catalog with categories</li>
+                                <li>Shopping cart functionality</li>
+                                <li>Order management system</li>
+                                <li>Payment gateway integration</li>
+                                <li>Admin dashboard</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                            <span class="progress-text">60% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-screenshots">
+                        <div class="screenshot-container">
+                            <img src="Images/Web_homepage.png" alt="E-commerce Homepage">
+                            <div class="screenshot-overlay">
+                                <span>Homepage Design</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-container">
+                            <img src="Images/Web_product catalog.png" alt="Product Catalog">
+                            <div class="screenshot-overlay">
+                                <span>Product Catalog</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-actions">
+                        <button class="btn btn-primary" onclick="viewProject('ecommerce')">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-secondary" onclick="viewCode('ecommerce')">
+                            <i class="fab fa-github"></i> Source Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Future Project Placeholder -->
+                <div class="project-card slide-in-left upcoming">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="project-status upcoming">
+                            <span>Upcoming</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3>Mobile App Project</h3>
+                        <p class="project-description">
+                            Planning to develop a mobile application using modern frameworks. 
+                            This project will focus on mobile UI/UX design principles and 
+                            cross-platform compatibility.
+                        </p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag react">React Native</span>
+                            <span class="tech-tag js">JavaScript</span>
+                            <span class="tech-tag firebase">Firebase</span>
+                        </div>
+                        
+                        <div class="project-timeline">
+                            <h4>Expected Timeline:</h4>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Q2 2025</span>
+                                <span class="timeline-task">Project Planning & Design</span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Q3 2025</span>
+                                <span class="timeline-task">Development Phase</span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Q4 2025</span>
+                                <span class="timeline-task">Testing & Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-placeholder">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>Coming Soon...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Sumit Gaikwad | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Code rain animation
+        function createCodeRain() {
+            const codeRain = document.getElementById('codeRain');
+            const characters = '01';
+            const columns = Math.floor(window.innerWidth / 20);
+            
+            for (let i = 0; i < columns; i++) {
+                const column = document.createElement('div');
+                column.className = 'code-column';
+                column.style.left = i * 20 + 'px';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                
+                const text = Array.from({length: 50}, () => 
+                    characters[Math.floor(Math.random() * characters.length)]
+                ).join('');
+                
+                column.textContent = text;
+                codeRain.appendChild(column);
+            }
+        }
+
+        // Project actions
+        function viewProject(projectName) {
+            alert(`Viewing details for ${projectName} project. This would open a detailed modal or new page.`);
+        }
+
+        function viewCode(projectName) {
+            alert(`Opening source code for ${projectName} project. This would redirect to GitHub repository.`);
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            createCodeRain();
+        });
+
+        // Hover effects for project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Screenshot hover effects
+        document.querySelectorAll('.screenshot-container').forEach(container => {
+            container.addEventListener('mouseenter', function() {
+                const overlay = this.querySelector('.screenshot-overlay');
+                overlay.style.opacity = '1';
+            });
+            
+            container.addEventListener('mouseleave', function() {
+                const overlay = this.querySelector('.screenshot-overlay');
+                overlay.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>
+
+<style>
+/* projects.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #2C3E50;
+    --accent-color: #3498DB;
+    --success-color: #27AE60;
+    --warning-color: #F39C12;
+    --text-color: #333;
+    --text-light: #666;
+    --background-light: #F8F9FA;
+    --white: #FFFFFF;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Code Rain Background */
+.code-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.code-column {
+    position: absolute;
+    top: -100%;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: rgba(74, 144, 226, 0.1);
+    white-space: pre;
+    animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(calc(100vh + 100%));
+    }
+}
+
+/* Main Content */
+.projects-section {
+    min-height: 100vh;
+    padding: 120px 0 80px;
+    color: var(--white);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 4rem;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.project-card.upcoming {
+    opacity: 0.8;
+}
+
+/* Project Header */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+}
+
+.project-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.project-status span {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.project-status.completed span {
+    background: var(--success-color);
+    color: var(--white);
+}
+
+.project-status.in-progress span {
+    background: var(--warning-color);
+    color: var(--white);
+}
+
+.project-status.upcoming span {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+/* Project Content */
+.project-content h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.tech-tag.python { background: #3776ab; }
+.tech-tag.mysql { background: #00758f; }
+.tech-tag.gui { background: #ffde57; color: #333; }
+.tech-tag.html { background: #e34f26; }
+.tech-tag.css { background: #1572b6; }
+.tech-tag.js { background: #f7df1e; color: #333; }
+.tech-tag.php { background: #777bb4; }
+.tech-tag.react { background: #61dafb; color: #333; }
+.tech-tag.firebase { background: #ffca28; color: #333; }
+
+.project-features h4,
+.project-timeline h4 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.project-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-features li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.project-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success-color), var(--primary-color));
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* Timeline */
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-date {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.timeline-task {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Screenshots */
+.project-screenshots {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.screenshot-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.screenshot-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.screenshot-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: var(--white);
+    padding: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Project Placeholder */
+.project-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.project-placeholder i {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.project-placeholder p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Project Actions */
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    grid-column: 1 / -1;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--text-color);
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Animations */
+.fade-in,
+.slide-in-left,
+.slide-in-right {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.slide-in-left {
+    transform: translateX(-50px) translateY(20px);
+}
+
+.slide-in-right {
+    transform: translateX(50px) translateY(20px);
+}
+
+.fade-in.animate,
+.slide-in-left.animate,
+.slide-in-right.animate {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .project-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .tech-stack {
+        justify-content: center;
+    }
+}
+</style>

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Sumit Gaikwad</title>
+    <link rel="stylesheet" href="certificates.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Sumit Gaikwad</a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="certificates.html" class="nav-link active">Certificates</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="resume.html" class="nav-link">Resume</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="certificates-section">
+        <div class="container">
+            <h1 class="page-title fade-in">Certificates & Achievements</h1>
+            <p class="section-subtitle fade-in">My journey of continuous learning and professional development</p>
+            
+            <!-- Filter Tabs -->
+            <div class="filter-tabs fade-in">
+                <button class="tab-btn active" onclick="filterCertificates('all')">All</button>
+                <button class="tab-btn" onclick="filterCertificates('academic')">Academic</button>
+                <button class="tab-btn" onclick="filterCertificates('sports')">Sports & Extra</button>
+            </div>
+            
+            <!-- Academic Certificates Section -->
+            <div class="certificates-category" id="academic">
+                <h2 class="category-title slide-in-left">
+                    <i class="fas fa-graduation-cap"></i>
+                    Academic Certificates
+                </h2>
+                
+                <div class="certificates-grid">
+                    <!-- Python Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="academic">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/4A90E2/FFFFFF?text=Python+Certificate" alt="Python Programming Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('python')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Python Programming</h3>
+                            <p class="certificate-issuer">Completed Advanced Python Course</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-award"></i>
+                                    <span>Grade A+</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Programming</span>
+                                <span class="tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DBMS Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="academic">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/2C3E50/FFFFFF?text=DBMS+Certificate" alt="Database Management Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('dbms')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Database Management Systems</h3>
+                            <p class="certificate-issuer">DBMS Fundamentals & Advanced Topics</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-award"></i>
+                                    <span>Grade A</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Database</span>
+                                <span class="tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Java Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="academic">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/E74C3C/FFFFFF?text=Java+Certificate" alt="Java Programming Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('java')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Core Java Programming</h3>
+                            <p class="certificate-issuer">Object-Oriented Programming with Java</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-award"></i>
+                                    <span>Grade A+</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Programming</span>
+                                <span class="tag">Java</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workshop Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="academic">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/27AE60/FFFFFF?text=Workshop+Certificate" alt="Technical Workshop Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('workshop')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Technical Workshop</h3>
+                            <p class="certificate-issuer">Web Development & Modern Frameworks</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>50+ Participants</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hackathon Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="academic">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/9B59B6/FFFFFF?text=Hackathon+Certificate" alt="Coding Hackathon Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('hackathon')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Coding Hackathon</h3>
+                            <p class="certificate-issuer">24-Hour Programming Challenge</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Participant</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Hackathon</span>
+                                <span class="tag">Coding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coding Event Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="academic">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/F39C12/FFFFFF?text=Coding+Event" alt="Coding Competition Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('coding-event')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Coding Competition</h3>
+                            <p class="certificate-issuer">Algorithm & Data Structure Challenge</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2024</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-medal"></i>
+                                    <span>Top 10</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Competition</span>
+                                <span class="tag">DSA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports & Extracurricular Section -->
+            <div class="certificates-category" id="sports">
+                <h2 class="category-title slide-in-right">
+                    <i class="fas fa-trophy"></i>
+                    Sports & Extracurricular Certificates
+                </h2>
+                
+                <div class="certificates-grid">
+                    <!-- Sports Achievement 1 -->
+                    <div class="certificate-card slide-in-up" data-category="sports">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/E67E22/FFFFFF?text=Sports+Certificate" alt="Sports Achievement Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('sports1')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Inter-College Sports</h3>
+                            <p class="certificate-issuer">Annual Sports Competition</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-medal"></i>
+                                    <span>Bronze Medal</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Sports</span>
+                                <span class="tag">Competition</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Event -->
+                    <div class="certificate-card slide-in-up" data-category="sports">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/8E44AD/FFFFFF?text=Cultural+Event" alt="Cultural Participation Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('cultural')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Cultural Festival</h3>
+                            <p class="certificate-issuer">Annual College Cultural Event</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>Active Participant</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Cultural</span>
+                                <span class="tag">Performance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volunteer Work -->
+                    <div class="certificate-card slide-in-up" data-category="sports">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/16A085/FFFFFF?text=Volunteer+Work" alt="Volunteer Service Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('volunteer')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Community Service</h3>
+                            <p class="certificate-issuer">Volunteer Work & Social Responsibility</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>50+ Hours</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Volunteer</span>
+                                <span class="tag">Community</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leadership Certificate -->
+                    <div class="certificate-card slide-in-up" data-category="sports">
+                        <div class="certificate-image">
+                            <img src="https://via.placeholder.com/300x200/C0392B/FFFFFF?text=Leadership" alt="Leadership Certificate">
+                            <div class="certificate-overlay">
+                                <button class="view-btn" onclick="viewCertificate('leadership')">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="certificate-info">
+                            <h3>Student Leadership</h3>
+                            <p class="certificate-issuer">Leadership Skills Development Program</p>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Team Leader</span>
+                                </div>
+                            </div>
+                            <div class="certificate-tags">
+                                <span class="tag">Leadership</span>
+                                <span class="tag">Skills</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Certificate Modal -->
+    <div class="modal" id="certificateModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCertificate()">&times;</span>
+            <img id="modalImage" src="" alt="Certificate">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Sumit Gaikwad | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Certificate filter functionality
+        function filterCertificates(category) {
+            const cards = document.querySelectorAll('.certificate-card');
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            // Update active tab
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else if (card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Certificate modal functionality
+        function viewCertificate(certId) {
+            const modal = document.getElementById('certificateModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            
+            // Certificate data (in real implementation, this would come from a database)
+            const certificates = {
+                python: {
+                    title: 'Python Programming Certificate',
+                    description: 'Advanced Python programming course completion with hands-on projects and practical applications.',
+                    image: 'https://via.placeholder.com/600x400/4A90E2/FFFFFF?text=Python+Programming+Certificate'
+                },
+                dbms: {
+                    title: 'Database Management Systems',
+                    description: 'Comprehensive study of database design, implementation, and management using SQL and NoSQL databases.',
+                    image: 'https://via.placeholder.com/600x400/2C3E50/FFFFFF?text=DBMS+Certificate'
+                },
+                java: {
+                    title: 'Core Java Programming',
+                    description: 'Object-oriented programming fundamentals and advanced Java concepts including collections and multithreading.',
+                    image: 'https://via.placeholder.com/600x400/E74C3C/FFFFFF?text=Java+Certificate'
+                },
+                workshop: {
+                    title: 'Technical Workshop Certificate',
+                    description: 'Participation in hands-on workshop covering modern web development frameworks and best practices.',
+                    image: 'https://via.placeholder.com/600x400/27AE60/FFFFFF?text=Workshop+Certificate'
+                },
+                hackathon: {
+                    title: 'Coding Hackathon',
+                    description: '24-hour programming challenge focused on innovative problem-solving and rapid prototyping.',
+                    image: 'https://via.placeholder.com/600x400/9B59B6/FFFFFF?text=Hackathon+Certificate'
+                },
+                'coding-event': {
+                    title: 'Coding Competition',
+                    description: 'Algorithmic programming competition with focus on data structures and optimization.',
+                    image: 'https://via.placeholder.com/600x400/F39C12/FFFFFF?text=Coding+Competition'
+                },
+                sports1: {
+                    title: 'Inter-College Sports Certificate',
+                    description: 'Bronze medal achievement in annual inter-college sports competition.',
+                    image: 'https://via.placeholder.com/600x400/E67E22/FFFFFF?text=Sports+Achievement'
+                },
+                cultural: {
+                    title: 'Cultural Festival Certificate',
+                    description: 'Active participation in college cultural festival with outstanding performance.',
+                    image: 'https://via.placeholder.com/600x400/8E44AD/FFFFFF?text=Cultural+Event'
+                },
+                volunteer: {
+                    title: 'Community Service Certificate',
+                    description: 'Recognition for dedicated volunteer work and community service activities.',
+                    image: 'https://via.placeholder.com/600x400/16A085/FFFFFF?text=Volunteer+Service'
+                },
+                leadership: {
+                    title: 'Student Leadership Certificate',
+                    description: 'Completion of leadership development program with practical team management experience.',
+                    image: 'https://via.placeholder.com/600x400/C0392B/FFFFFF?text=Leadership+Certificate'
+                }
+            };
+            
+            const cert = certificates[certId];
+            if (cert) {
+                modalTitle.textContent = cert.title;
+                modalDescription.textContent = cert.description;
+                modalImage.src = cert.image;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCertificate() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('certificateModal');
+            if (e.target === modal) {
+                closeCertificate();
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .slide-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Staggered animation for certificate cards
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.certificate-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = index * 0.1 + 's';
+            });
+        });
+    </script>
+</body>
+</html>
+
+<style>
+/* certificates.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #2C3E50;
+    --accent-color: #3498DB;
+    --success-color: #27AE60;
+    --warning-color: #F39C12;
+    --text-color: #333;
+    --text-light: #666;
+    --background-light: #F8F9FA;
+    --white: #FFFFFF;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Main Content */
+.certificates-section {
+    min-height: 100vh;
+    padding: 120px 0 80px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.tab-btn {
+    padding: 1rem 2rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Certificates Categories */
+.certificates-category {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.category-title i {
+    color: var(--primary-color);
+}
+
+/* Certificates Grid */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.certificate-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.certificate-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.certificate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.certificate-card:hover .certificate-image img {
+    transform: scale(1.1);
+}
+
+.certificate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.certificate-card:hover .certificate-overlay {
+    opacity: 1;
+}
+
+.view-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.view-btn:hover {
+    transform: scale(1.2);
+    background: var(--accent-color);
+}
+
+.certificate-info {
+    padding: 2rem;
+}
+
+.certificate-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.certificate-issuer {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.certificate-details {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.detail-item i {
+    color: var(--primary-color);
+}
+
+.certificate-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    padding: 0.3rem 0.8rem;
+    background: var(--background-light);
+    color: var(--primary-color);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Certificate Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--text-light);
+    cursor: pointer;
+    z-index: 10;
+    background: var(--white);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.close-btn:hover {
+    color: var(--primary-color);
+    background: var(--background-light);
+}
+
+#modalImage {
+    width: 100%;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-info {
+    padding: 2rem;
+}
+
+.modal-info h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* Footer */
+.footer {
+    background: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Animations */
+.fade-in,
+.slide-in-left,
+.slide-in-right,
+.slide-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.slide-in-left {
+    transform: translateX(-50px) translateY(20px);
+}
+
+.slide-in-right {
+    transform: translateX(50px) translateY(20px);
+}
+
+.slide-in-up {
+    transform: translateY(30px);
+}
+
+.fade-in.animate,
+.slide-in-left.animate,
+.slide-in-right.animate,
+.slide-in-up.animate {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .category-title {
+        font-size: 2rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-tabs {
+        flex-wrap: wrap;
+    }
+
+    .certificate-details {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .modal-content {
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .certificate-info {
+        padding: 1.5rem;
+    }
+
+    .modal-info {
+        padding: 1.5rem;
+    }
+}
