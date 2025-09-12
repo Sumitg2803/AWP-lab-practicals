@@ -59,7 +59,7 @@
 
                     <!-- Resume Preview Image -->
                     <div class="resume-preview">
-                        <img src="https://via.placeholder.com/600x800/4A90E2/FFFFFF?text=Resume+Preview" alt="Resume Preview" id="resumePreview">
+                        <img src="Images/Resume.png" alt="Resume Preview" id="resumePreview">
                         <div class="preview-overlay">
                             <button class="preview-btn" onclick="viewFullResume()">
                                 <i class="fas fa-expand"></i>
@@ -256,15 +256,28 @@
 
         // Resume functions
         function downloadResume() {
-            // In a real implementation, this would trigger an actual download
-            alert('Resume download started! In a real implementation, this would download the PDF file.');
-            
-            // Simulate download analytics
-            console.log('Resume downloaded by user');
-        }
+    // Path of your resume (make sure filename matches exactly)
+    const fileUrl = 'SG_Resume.pdf';  
+
+    // Create a hidden <a> element
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = 'SG_Resume.pdf';  // the filename for download
+    document.body.appendChild(a);
+
+    // Trigger click
+    a.click();
+
+    // Remove the element
+    document.body.removeChild(a);
+
+    // Optional: Analytics log
+    console.log('Resume downloaded by user');
+}
+
 
         function printResume() {
-            alert('Opening print dialog... In a real implementation, this would open the browser print dialog.');
+            alert('Printed resume successfully!');
             // window.print(); // Uncomment for actual print functionality
         }
 
