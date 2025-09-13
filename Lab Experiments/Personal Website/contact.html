@@ -261,6 +261,14 @@
         </div>
     </footer>
 
+
+    <form id="contactForm">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="email" id="email" placeholder="Your Email" required>
+  <textarea id="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
     <script>
         // Navigation toggle
         const navToggle = document.getElementById('navToggle');
@@ -359,6 +367,28 @@
                 }
             });
         });
+
+
+        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  const res = await fetch("/.netlify/functions/saveMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  const data = await res.json();
+  alert(data.message); // show success/failure
+});
+
+
     </script>
 </body>
 </html>
