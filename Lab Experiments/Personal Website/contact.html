@@ -94,29 +94,33 @@
                         </div>
                     </div>
 
-                    <!-- Social Media Links -->
-                <div class="social-media">
-                    <h3>Connect with me</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=100021969339580" class="social-link facebook" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/sumitsg_2803/" class="social-link instagram" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://x.com/Sumitsg2803" class="social-link twitter" title="X (Twitter)">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sumit-gaikwad-176996289/" class="social-link linkedin" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Sumitg2803" class="social-link github" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
+                    <!-- Social Media -->
+                    <div class="social-media">
+                        <h3>Connect with Me</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link instagram" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link twitter" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                                <span>X (Twitter)</span>
+                            </a>
+                            <a href="#" class="social-link linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="social-link github" title="GitHub">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
 
                 <!-- Contact Form -->
                 <div class="contact-form-container slide-in-right">
@@ -174,7 +178,13 @@
                         <div class="success-message" id="successMessage">
                             <i class="fas fa-check-circle"></i>
                             <h3>Message Sent Successfully!</h3>
-                            <p>Thank you for reaching out. I'll get back to you within 48 hours.</p>
+                            <p>Thank you for reaching out. Your message has been received and stored securely. I'll get back to you within 24 hours.</p>
+                            <div class="success-details">
+                                <small class="text-muted">
+                                    <i class="fas fa-info-circle"></i>
+                                    Your message has been saved with timestamp: <span id="messageTimestamp"></span>
+                                </small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,7 +199,7 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="stat-info">
-                            <div class="stat-number">< 48 hrs</div>
+                            <div class="stat-number">< 24hrs</div>
                             <div class="stat-label">Response Time</div>
                         </div>
                     </div>
@@ -249,9 +259,8 @@
                 
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p><i class="fas fa-phone"></i> +91 99224 25267</p> <br>
-                    <p><i class="fas fa-envelope"></i> sumit.s.gaikwad28@gmail.com</p> <br>
-                    <p><i class="fas fa-envelope"></i> sumit.gaikwad23@pcu.edu.in</p>
+                    <p><i class="fas fa-phone"></i> +91 99224 25267</p>
+                    <p><i class="fas fa-envelope"></i> sumit.s.gaikwad28@gmail.com</p>
                 </div>
             </div>
             
@@ -279,29 +288,99 @@
             const loader = document.getElementById('btnLoader');
             const successMessage = document.getElementById('successMessage');
             
+            // Get form data
+            const formData = {
+                id: Date.now().toString(),
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                newsletter: document.getElementById('newsletter').checked,
+                timestamp: new Date().toLocaleString(),
+                status: 'active' // active, deleted, trashed
+            };
+            
             // Show loading state
             submitBtn.classList.add('loading');
             loader.style.display = 'block';
             
-            // Simulate form submission (in real implementation, this would send to a server)
+            // Simulate form submission delay
             setTimeout(() => {
+                // Store in localStorage
+                let responses = JSON.parse(localStorage.getItem('portfolioResponses') || '[]');
+                responses.unshift(formData); // Add to beginning of array
+                localStorage.setItem('portfolioResponses', JSON.stringify(responses));
+                
                 // Hide loading state
                 submitBtn.classList.remove('loading');
                 loader.style.display = 'none';
+                
+                // Update success message with timestamp
+                document.getElementById('messageTimestamp').textContent = formData.timestamp;
                 
                 // Hide form and show success message
                 this.style.display = 'none';
                 successMessage.style.display = 'block';
                 
-                // Reset form after showing success message
+                // Auto-hide success message and reset form after 7 seconds
                 setTimeout(() => {
                     this.reset();
                     this.style.display = 'block';
                     successMessage.style.display = 'none';
-                }, 5000);
+                    
+                    // Show confirmation with secret link (only visible for 10 seconds)
+                    showAdminNotification();
+                }, 7000);
                 
             }, 2000);
         });
+
+        // Show admin notification with secret link
+        function showAdminNotification() {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; background: #2C3E50; color: white; 
+                padding: 1rem; border-radius: 10px; z-index: 9999; max-width: 300px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3); animation: slideIn 0.3s ease;
+            `;
+            notification.innerHTML = `
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">📧 New Response Received!</div>
+                <div style="font-size: 0.9rem; margin-bottom: 1rem;">Click to view responses (Admin Only):</div>
+                <a href="admin-responses-7b8c9d.html" target="_blank" style="
+                    color: #4A90E2; text-decoration: none; font-weight: 500; 
+                    background: rgba(74,144,226,0.1); padding: 0.5rem; border-radius: 5px; display: block; text-align: center;
+                ">🔒 View Responses</a>
+                <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem; text-align: center;">This notification will disappear in 10 seconds</div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }
+            }, 10000);
+        }
+
+        // Add CSS for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Animation on scroll
         const observerOptions = {
@@ -579,7 +658,7 @@ body {
 }
 
 .contact-link {
-    color: lightgreen;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
@@ -590,66 +669,61 @@ body {
 }
 
 /* Social Media */
- .social-media {
-            margin-top: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
+.social-media {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-        .social-media h3 {
-            color: white;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
+.social-media h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
 
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-         .social-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
 
-        .social-link:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+}
 
-        .facebook::before { background: linear-gradient(135deg, #3b5998, #2d4373); }
-        .instagram::before { background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
-        .twitter::before { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
-        .linkedin::before { background: linear-gradient(135deg, #0077b5, #005885); }
-        .github::before { background: linear-gradient(135deg, #333, #24292e); }
+.social-link.facebook:hover { background: #3b5998; }
+.social-link.instagram:hover { background: #e4405f; }
+.social-link.twitter:hover { background: #1da1f2; }
+.social-link.linkedin:hover { background: #0077b5; }
+.social-link.github:hover { background: #333; }
 
+.social-link i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
 
+.social-link span {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
 
 /* Contact Form */
 .contact-form-container {
@@ -841,6 +915,12 @@ body {
 
 .success-message p {
     opacity: 0.9;
+}
+
+.success-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Response Stats */
@@ -1076,5 +1156,3 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-</style>

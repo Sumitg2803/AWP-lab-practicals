@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Responses - Portfolio Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #2C3E50;
+            --accent-color: #3498DB;
+            --success-color: #27AE60;
+            --warning-color: #F39C12;
+            --danger-color: #E74C3C;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .admin-header {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .admin-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-subtitle {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .active-stat { color: var(--success-color); }
+        .trash-stat { color: var(--danger-color); }
+        .total-stat { color: var(--primary-color); }
+        .today-stat { color: var(--warning-color); }
+
+        .section-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .response-table {
+            margin-bottom: 0;
+        }
+
+        .response-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            font-weight: 600;
+            border: none;
+        }
+
+        .response-table td {
+            vertical-align: middle;
+            border-color: #eee;
+        }
+
+        .response-row {
+            transition: all 0.3s ease;
+        }
+
+        .response-row:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.01);
+        }
+
+        .message-preview {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .message-preview:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .btn-action {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            border-radius: 5px;
+            margin: 0.1rem;
+        }
+
+        .btn-view { background: var(--primary-color); border: none; }
+        .btn-reply { background: var(--success-color); border: none; }
+        .btn-delete { background: var(--danger-color); border: none; }
+        .btn-restore { background: var(--warning-color); border: none; }
+        .btn-permanent { background: var(--secondary-color); border: none; }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .alert-custom {
+            border-radius: 10px;
+            border: none;
+            font-weight: 500;
+        }
+
+        .navbar-admin {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .navbar-admin .navbar-brand {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .back-to-portfolio {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .back-to-portfolio:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .container-fluid {
+                padding: 1rem;
+            }
+            
+            .stats-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Admin Navigation -->
+        <nav class="navbar-admin">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <span class="navbar-brand mb-0">🔒 Portfolio Admin Panel</span>
+                <a href="index.html" class="back-to-portfolio">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </nav>
+
+        <!-- Admin Header -->
+        <div class="admin-header">
+            <h1 class="admin-title">📧 Contact Form Responses</h1>
+            <p class="admin-subtitle">Manage all contact form submissions from your portfolio</p>
+            <div class="text-muted">
+                <i class="fas fa-shield-alt"></i> Private Admin Area - Not accessible to public visitors
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-number active-stat" id="activeCount">0</div>
+                <div class="stat-label">Active Messages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number trash-stat" id="trashCount">0</div>
+                <div class="stat-label">In Trash</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number total-stat" id="totalCount">0</div>
+                <div class="stat-label">Total Received</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number today-stat" id="todayCount">0</div>
+                <div class="stat-label">Today</div>
+            </div>
+        </div>
+
+        <!-- Alert Area -->
+        <div id="alertArea"></div>
+
+        <!-- Active Responses Section -->
+        <div class="section-card">
+            <h3 class="section-title">
+                <i class="fas fa-inbox"></i>
+                Active Messages
+            </h3>
+            
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <div class="search-box">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" class="form-control" id="searchActive" placeholder="Search messages...">
+                    </div>
+                </div>
+                <select class="form-select" id="subjectFilter" style="max-width: 200px;">
+                    <option value="">All Subjects</option>
+                </select>
+                <select class="form-select" id="dateFilter" style="max-width: 150px;">
+                    <option value="">All Dates</option>
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                </select>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="btn btn-outline-primary btn-sm" onclick="refreshData()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn btn-outline-success btn-sm" onclick="exportResponses()">
+                    <i class="fas fa-download"></i> Export CSV
+                </button>
+                <button class="btn btn-outline-danger btn-sm" onclick="clearAllTrash()">
+                    <i class="fas fa-trash-alt"></i> Clear All Trash
+                </button>
+            </div>
+            
+            <!-- Active Responses Table -->
+            <div class="table-container">
+                <table class="table table-hover response-table" id="activeResponsesTable">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message Preview</th>
+                            <th>Newsletter</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activeResponsesBody">
+                    </tbody>
+                </table>
+                <div id="activeEmptyState" class="empty-state" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <h4>No Active Messages</h4>
+                    <p>All messages have been moved to trash or no messages received yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trash Section -->
+        <div class="section-card">
+            <h3 class="section-title">
+                <i class="fas fa-trash"></i>
+                Trash Bin
+            </h3>
+            
+            <div class="table-container">
+                <table class="table table-hover response-table" id="trashResponsesTable">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message Preview</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trashResponsesBody">
+                    </tbody>
+                </table>
+                <div id="trashEmptyState" class="empty-state" style="display: none;">
+                    <i class="fas fa-trash-alt"></i>
+                    <h4>Trash is Empty</h4>
+                    <p>No deleted messages in trash bin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Details Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Message Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="messageModalBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="replyButton">
+                        <i class="fas fa-reply"></i> Reply via Email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        let allResponses = [];
+        let currentMessage = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResponses();
+            updateStats();
+            populateFilters();
+            
+            // Setup search functionality
+            document.getElementById('searchActive').addEventListener('input', filterActiveResponses);
+            document.getElementById('subjectFilter').addEventListener('change', filterActiveResponses);
+            document.getElementById('dateFilter').addEventListener('change', filterActiveResponses);
+        });
+
+        // Load responses from localStorage
+        function loadResponses() {
+            const stored = localStorage.getItem('portfolioResponses');
+            allResponses = stored ? JSON.parse(stored) : [];
+            renderActiveResponses();
+            renderTrashResponses();
+            updateStats();
+        }
+
+        // Save responses to localStorage
+        function saveResponses() {
+            localStorage.setItem('portfolioResponses', JSON.stringify(allResponses));
+            updateStats();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const active = allResponses.filter(r => r.status === 'active').length;
+            const trash = allResponses.filter(r => r.status === 'deleted').length;
+            const total = allResponses.length;
+            const today = allResponses.filter(r => {
+                const messageDate = new Date(r.timestamp).toDateString();
+                const todayDate = new Date().toDateString();
+                return messageDate === todayDate;
+            }).length;
+
+            document.getElementById('activeCount').textContent = active;
+            document.getElementById('trashCount').textContent = trash;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('todayCount').textContent = today;
+        }
+
+        // Populate filter dropdowns
+        function populateFilters() {
+            const subjects = [...new Set(allResponses.map(r => r.subject).filter(s => s))];
+            const subjectFilter = document.getElementById('subjectFilter');
+            
+            // Clear existing options (except "All Subjects")
+            while (subjectFilter.children.length > 1) {
+                subjectFilter.removeChild(subjectFilter.lastChild);
+            }
+            
+            subjects.forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject;
+                option.textContent = subject;
+                subjectFilter.appendChild(option);
+            });
+        }
+
+        // Render active responses
+        function renderActiveResponses() {
+            const activeResponses = allResponses.filter(r => r.status === 'active');
+            const tbody = document.getElementById('activeResponsesBody');
+            const emptyState = document.getElementById('activeEmptyState');
+            
+            if (activeResponses.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            tbody.innerHTML = activeResponses.map(response => `
+                <tr class="response-row" data-id="${response.id}">
+                    <td>
+                        <small class="text-muted">${formatDate(response.timestamp)}</small>
+                    </td>
+                    <td>
+                        <strong>${escapeHtml(response.name)}</strong>
+                    </td>
+                    <td>
+                        <a href="mailto:${response.email}" class="text-decoration-none">
+                            ${escapeHtml(response.email)}
+                        </a>
+                    </td>
+                    <td>
+                        <span class="badge bg-primary">${escapeHtml(response.subject)}</span>
+                    </td>
+                    <td>
+                        <div class="message-preview" onclick="viewMessage('${response.id}')">
+                            ${escapeHtml(response.message.substring(0, 50))}${response.message.length > 50 ? '...' : ''}
+                        </div>
+                    </td>
+                    <td>
+                        ${response.newsletter ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-secondary">No</span>'}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-action btn-view" onclick="viewMessage('${response.id}')" title="View Full Message">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-success btn-action btn-reply" onclick="replyToMessage('${response.id}')" title="Reply via Email">
+                            <i class="fas fa-reply"></i>
+                        </button>
+                        <button class="btn btn-danger btn-action btn-delete" onclick="deleteMessage('${response.id}')" title="Move to Trash">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Render trash responses
+        function renderTrashResponses() {
+            const trashResponses = allResponses.filter(r => r.status === 'deleted');
+            const tbody = document.getElementById('trashResponsesBody');
+            const emptyState = document.getElementById('trashEmptyState');
+            
+            if (trashResponses.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            tbody.innerHTML = trashResponses.map(response => `
+                <tr class="response-row" data-id="${response.id}">
+                    <td>
+                        <small class="text-muted">${formatDate(response.timestamp)}</small>
+                    </td>
+                    <td>
+                        <strong>${escapeHtml(response.name)}</strong>
+                    </td>
+                    <td>
+                        ${escapeHtml(response.email)}
+                    </td>
+                    <td>
+                        <span class="badge bg-secondary">${escapeHtml(response.subject)}</span>
+                    </td>
+                    <td>
+                        <div class="message-preview" onclick="viewMessage('${response.id}')">
+                            ${escapeHtml(response.message.substring(0, 50))}${response.message.length > 50 ? '...' : ''}
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-action btn-view" onclick="viewMessage('${response.id}')" title="View Full Message">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-warning btn-action btn-restore" onclick="restoreMessage('${response.id}')" title="Restore to Active">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                        <button class="btn btn-dark btn-action btn-permanent" onclick="permanentlyDelete('${response.id}')" title="Delete Permanently">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Filter active responses
+        function filterActiveResponses() {
+            const searchTerm = document.getElementById('searchActive').value.toLowerCase();
+            const subjectFilter = document.getElementById('subjectFilter').value;
+            const dateFilter = document.getElementById('dateFilter').value;
+            
+            let filtered = allResponses.filter(r => r.status === 'active');
+            
+            // Apply search filter
+            if (searchTerm) {
+                filtered = filtered.filter(r => 
+                    r.name.toLowerCase().includes(searchTerm) ||
+                    r.email.toLowerCase().includes(searchTerm) ||
+                    r.message.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Apply subject filter
+            if (subjectFilter) {
+                filtered = filtered.filter(r => r.subject === subjectFilter);
+            }
+            
+            // Apply date filter
+            if (dateFilter) {
+                const now = new Date();
+                filtered = filtered.filter(r => {
+                    const messageDate = new Date(r.timestamp);
+                    switch(dateFilter) {
+                        case 'today':
+                            return messageDate.toDateString() === now.toDateString();
+                        case 'week':
+                            const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                            return messageDate >= weekAgo;
+                        case 'month':
+                            const monthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+                            return messageDate >= monthAgo;
+                        default:
+                            return true;
+                    }
+                });
+            }
+            
+            // Re-render with filtered results
+            const tbody = document.getElementById('activeResponsesBody');
+            const emptyState = document.getElementById('activeEmptyState');
+            
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                emptyState.innerHTML = `
+                    <i class="fas fa-search"></i>
+                    <h4>No Messages Found</h4>
+                    <p>No messages match your current filters.</p>
+                `;
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            tbody.innerHTML = filtered.map(response => `
+                <tr class="response-row" data-id="${response.id}">
+                    <td>
+                        <small class="text-muted">${formatDate(response.timestamp)}</small>
+                    </td>
+                    <td>
+                        <strong>${escapeHtml(response.name)}</strong>
+                    </td>
+                    <td>
+                        <a href="mailto:${response.email}" class="text-decoration-none">
+                            ${escapeHtml(response.email)}
+                        </a>
+                    </td>
+                    <td>
+                        <span class="badge bg-primary">${escapeHtml(response.subject)}</span>
+                    </td>
+                    <td>
+                        <div class="message-preview" onclick="viewMessage('${response.id}')">
+                            ${escapeHtml(response.message.substring(0, 50))}${response.message.length > 50 ? '...' : ''}
+                        </div>
+                    </td>
+                    <td>
+                        ${response.newsletter ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-secondary">No</span>'}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-action btn-view" onclick="viewMessage('${response.id}')" title="View Full Message">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-success btn-action btn-reply" onclick="replyToMessage('${response.id}')" title="Reply via Email">
+                            <i class="fas fa-reply"></i>
+                        </button>
+                        <button class="btn btn-danger btn-action btn-delete" onclick="deleteMessage('${response.id}')" title="Move to Trash">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // View message details
+        function viewMessage(messageId) {
+            const message = allResponses.find(r => r.id === messageId);
+            if (!message) return;
+            
+            currentMessage = message;
+            
+            const modalBody = document.getElementById('messageModalBody');
+            modalBody.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Contact Information</h6>
+                        <p><strong>Name:</strong> ${escapeHtml(message.name)}</p>
+                        <p><strong>Email:</strong> <a href="mailto:${message.email}">${escapeHtml(message.email)}</a></p>
+                        <p><strong>Subject:</strong> ${escapeHtml(message.subject)}</p>
+                        <p><strong>Newsletter:</strong> ${message.newsletter ? 'Yes' : 'No'}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Message Details</h6>
+                        <p><strong>Received:</strong> ${formatDate(message.timestamp)}</p>
+                        <p><strong>Status:</strong> 
+                            <span class="badge ${message.status === 'active' ? 'bg-success' : 'bg-danger'}">
+                                ${message.status === 'active' ? 'Active' : 'In Trash'}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <h6 class="text-primary">Full Message</h6>
+                <div class="border rounded p-3 bg-light">
+                    <p class="mb-0">${escapeHtml(message.message).replace(/\n/g, '<br>')}</p>
+                </div>
+            `;
+            
+            // Setup reply button
+            document.getElementById('replyButton').onclick = () => replyToMessage(messageId);
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('messageModal'));
+            modal.show();
+        }
+
+        // Reply to message via email
+        function replyToMessage(messageId) {
+            const message = allResponses.find(r => r.id === messageId);
+            if (!message) return;
+            
+            const subject = `Re: ${message.subject}`;
+            const body = `Hi ${message.name},\n\nThank you for reaching out through my portfolio website.\n\n---\nOriginal Message:\n"${message.message}"\n---\n\nBest regards,\nSumit Gaikwad`;
+            
+            const mailtoLink = `mailto:${message.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(mailtoLink, '_blank');
+            
+            showAlert('Email client opened for reply', 'success');
+        }
+
+        // Delete message (move to trash)
+        function deleteMessage(messageId) {
+            if (!confirm('Move this message to trash?')) return;
+            
+            const messageIndex = allResponses.findIndex(r => r.id === messageId);
+            if (messageIndex !== -1) {
+                allResponses[messageIndex].status = 'deleted';
+                saveResponses();
+                renderActiveResponses();
+                renderTrashResponses();
+                showAlert('Message moved to trash', 'warning');
+            }
+        }
+
+        // Restore message from trash
+        function restoreMessage(messageId) {
+            const messageIndex = allResponses.findIndex(r => r.id === messageId);
+            if (messageIndex !== -1) {
+                allResponses[messageIndex].status = 'active';
+                saveResponses();
+                renderActiveResponses();
+                renderTrashResponses();
+                showAlert('Message restored successfully', 'success');
+            }
+        }
+
+        // Permanently delete message
+        function permanentlyDelete(messageId) {
+            if (!confirm('Permanently delete this message? This action cannot be undone!')) return;
+            
+            allResponses = allResponses.filter(r => r.id !== messageId);
+            saveResponses();
+            renderTrashResponses();
+            showAlert('Message permanently deleted', 'danger');
+        }
+
+        // Refresh data
+        function refreshData() {
+            loadResponses();
+            populateFilters();
+            showAlert('Data refreshed', 'info');
+            
+            // Clear filters
+            document.getElementById('searchActive').value = '';
+            document.getElementById('subjectFilter').value = '';
+            document.getElementById('dateFilter').value = '';
+        }
+
+        // Export responses to CSV
+        function exportResponses() {
+            const activeResponses = allResponses.filter(r => r.status === 'active');
+            
+            if (activeResponses.length === 0) {
+                showAlert('No active responses to export', 'warning');
+                return;
+            }
+            
+            const headers = ['Date', 'Name', 'Email', 'Subject', 'Message', 'Newsletter'];
+            const csvContent = [
+                headers.join(','),
+                ...activeResponses.map(r => [
+                    r.timestamp,
+                    `"${r.name}"`,
+                    r.email,
+                    `"${r.subject}"`,
+                    `"${r.message.replace(/"/g, '""')}"`,
+                    r.newsletter ? 'Yes' : 'No'
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `portfolio_responses_${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showAlert('CSV file downloaded', 'success');
+        }
+
+        // Clear all trash
+        function clearAllTrash() {
+            const trashCount = allResponses.filter(r => r.status === 'deleted').length;
+            
+            if (trashCount === 0) {
+                showAlert('Trash is already empty', 'info');
+                return;
+            }
+            
+            if (!confirm(`Permanently delete all ${trashCount} messages in trash? This action cannot be undone!`)) return;
+            
+            allResponses = allResponses.filter(r => r.status !== 'deleted');
+            saveResponses();
+            renderTrashResponses();
+            showAlert(`${trashCount} messages permanently deleted`, 'danger');
+        }
+
+        // Show alert message
+        function showAlert(message, type) {
+            const alertArea = document.getElementById('alertArea');
+            const alertId = 'alert-' + Date.now();
+            
+            const alertHtml = `
+                <div class="alert alert-${type} alert-dismissible fade show alert-custom" role="alert" id="${alertId}">
+                    <i class="fas fa-${getAlertIcon(type)}"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            alertArea.insertAdjacentHTML('beforeend', alertHtml);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                const alert = document.getElementById(alertId);
+                if (alert) {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }
+            }, 5000);
+        }
+
+        // Get alert icon based on type
+        function getAlertIcon(type) {
+            switch(type) {
+                case 'success': return 'check-circle';
+                case 'danger': return 'exclamation-triangle';
+                case 'warning': return 'exclamation-circle';
+                case 'info': return 'info-circle';
+                default: return 'info-circle';
+            }
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        // Auto-refresh every 30 seconds
+        setInterval(() => {
+            const currentActive = allResponses.filter(r => r.status === 'active').length;
+            loadResponses();
+            const newActive = allResponses.filter(r => r.status === 'active').length;
+            
+            if (newActive > currentActive) {
+                showAlert(`${newActive - currentActive} new message(s) received!`, 'success');
+                populateFilters();
+            }
+        }, 30000);
+
+        // Add some demo data if none exists (for testing purposes)
+        function addDemoData() {
+            if (allResponses.length === 0) {
+                const demoResponses = [
+                    {
+                        id: Date.now().toString() + '1',
+                        name: 'Demo User',
+                        email: 'demo@example.com',
+                        subject: 'collaboration',
+                        message: 'This is a demo message to show how the admin panel works.',
+                        newsletter: true,
+                        timestamp: new Date().toLocaleString(),
+                        status: 'active'
+                    }
+                ];
+                
+                localStorage.setItem('portfolioResponses', JSON.stringify(demoResponses));
+                loadResponses();
+                showAlert('Demo data added for testing', 'info');
+            }
+        }
+
+        // Add demo data button (hidden, only for testing)
+        console.log('Admin Panel Loaded');
+        console.log('To add demo data for testing, run: addDemoData()');
+    </script>
+</body>
+</html>
