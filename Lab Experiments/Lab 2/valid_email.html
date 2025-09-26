@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valid Email</title>
+    <style>
+        body{
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function validateEmail() {
+            var email = document.forms["emailForm"]["email"].value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+                alert("Email must be filled out");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format");
+                return false;
+            }
+
+            window.location.href = "validuser.html";
+            return false;
+        }
+    </script>
+    <form name="emailForm" onsubmit="return validateEmail()">
+            Email: <input type="text" name="email"><br>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+</html>

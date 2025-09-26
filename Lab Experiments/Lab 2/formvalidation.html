@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body{
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["name"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var password = document.forms["myForm"]["password"].value;
+
+            if (name === "" && email === "" && password === "") {
+                alert("Fill out the details first");
+                return false;
+            }
+
+            if (name == "") {
+                alert("Name must be filled out");
+                return false;
+            }
+            if (email === "" && password === "") {
+                alert("Fill Email and password section");
+                return false;
+            }
+
+
+        if (email == "") {
+            alert("Email must be filled out");
+            return false;
+        } 
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Invalid email format");
+            return false;
+        }
+
+        if (password === "") {
+                alert("Please enter your password");
+                return false;
+            }
+
+
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long");
+            return false;
+        }
+         window.location.href = "validuser.html";
+        return false; 
+    }   
+    </script>
+    <form name="myForm" onsubmit="return validateForm()">
+        Name: <input type="text" name="name"><br>
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
