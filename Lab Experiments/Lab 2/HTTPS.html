@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX Example - Simple Output</title>
+  <script type="text/javascript">
+    function loadData() {
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // Instead of showing JSON, show a logical message
+          document.getElementById("result").innerHTML = 
+            "<h3 style='color:green;'>Data was loaded asynchronously using AJAX and XMLHttpRequest ✔</h3>";
+        }
+      };
+
+      // Still calling an API to demonstrate AJAX working
+      xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
+      xhttp.send();
+    }
+  </script>
+</head>
+<body>
+  <h1 style="text-align:center;">AJAX Example - Fetching Remote Data</h1>
+  <p style="text-align:center;">Click the button below to fetch data using AJAX.</p>
+
+  <center>
+    <button type="button" onclick="loadData()">Fetch Data</button>
+    <div id="result" style="margin-top:20px; border:1px solid black; padding:10px; width:60%;">
+      Data will appear here...
+    </div>
+  </center>
+</body>
+</html>
