@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="UserApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS User App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 0; /* optional: remove default margin */
+        height: 100vh; /* full screen height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      input {
+        margin: 5px 0;
+        padding: 8px;
+        width: 250px;
+      }
+      button {
+        padding: 8px 15px;
+        margin-top: 10px;
+      }
+      .box {
+        border: 1px solid #ccc;
+        padding: 15px;
+        width: 300px;
+        border-radius: 5px;
+        text-align: center;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="UserController">
+    <!-- Register -->
+    <div class="box" ng-if="!isRegistered && !isLoggedIn">
+      <h2>Register</h2>
+      <input
+        type="text"
+        ng-model="register.username"
+        placeholder="Username"
+      /><br />
+      <input
+        type="password"
+        ng-model="register.password"
+        placeholder="Password"
+      /><br />
+      <button type="button" ng-click="registerUser()">Register</button>
+    </div>
+    <!-- Login -->
+    <div class="box" ng-if="isRegistered && !isLoggedIn">
+      <h2>Login</h2>
+      <input
+        type="text"
+        ng-model="login.username"
+        placeholder="Username"
+      /><br />
+      <input
+        type="password"
+        ng-model="login.password"
+        placeholder="Password"
+      /><br />
+      <button ng-click="loginUser()">Login</button>
+      <p style="color: red" ng-if="errorMsg">{{errorMsg}}</p>
+    </div>
+    <!-- Profile -->
+    <div class="box" ng-if="isLoggedIn">
+      <h2>User Profile</h2>
+      <p><b>Username:</b> {{user.username}}</p>
+      <p><b>Password:</b> {{user.password}}</p>
+      <button ng-click="logout()">Logout</button>
+    </div>
+    <script>
+      var app = angular.module("UserApp", []);
+      app.controller("UserController", function ($scope) {
+        $scope.isRegistered = false;
+        $scope.isLoggedIn = false;
+        $scope.user = {};
+
+        $scope.register = {};
+    $scope.login = {};
+
+
+
+        $scope.registerUser = function () {
+          if ($scope.register.username && $scope.register.password) {
+            $scope.user.username = $scope.register.username;
+            $scope.user.password = $scope.register.password;
+            $scope.isRegistered = true;
+            alert("Registered Successfully!");
+          } else {
+            alert("Please fill all fields.");
+          }
+        };
+        $scope.loginUser = function () {
+          if (
+            $scope.login.username === $scope.user.username &&
+            $scope.login.password === $scope.user.password
+          ) {
+            $scope.isLoggedIn = true;
+            $scope.errorMsg = "";
+          } else {
+            $scope.errorMsg = "Invalid Username or Password";
+          }
+        };
+        $scope.logout = function () {
+          $scope.isLoggedIn = false;
+          $scope.login = {};
+        };
+      });
+    </script>
+  </body>
+</html>
